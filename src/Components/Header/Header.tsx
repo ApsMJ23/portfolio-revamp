@@ -9,7 +9,17 @@ const Header = () => {
                 <Container maxWidth={'xl'}>
                     <Toolbar disableGutters>
                         <CodeOffIcon sx={{fontSize: '2rem',marginRight:'1.5rem'}}/>
-                        <Typography >Apurv Singh</Typography>
+                        <Typography
+                            variant={'h6'}
+                            noWrap
+                            sx={{
+                            mr: 2,
+                            display: { xs: 'none', md: 'flex' },
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            color: 'inherit',
+                            textDecoration: 'none',
+                        }} >Apurv Singh</Typography>
                     </Toolbar>
                 </Container>
             </AppBar>
