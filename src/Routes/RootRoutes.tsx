@@ -1,15 +1,15 @@
-import {createBrowserRouter} from "react-router-dom";
+import {createBrowserRouter, Navigate} from "react-router-dom";
 import Root from "./Root.tsx";
-import App from "../App.tsx";
 
 export const router = createBrowserRouter([
     {
         path:'/',
         element:<Root/>,
         children:[
+            {index: true, element: <Navigate to={"/questions"} replace={true}/> },
             {
-                path:'/',
-                element:<App/>
+                path:'/questions',
+                element:<h1>Questions</h1>
             },
             {
                 path:'/about',

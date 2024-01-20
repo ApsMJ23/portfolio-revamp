@@ -18,8 +18,9 @@ const Header = () => {
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             color: 'inherit',
-                            textDecoration: 'none',
-                        }} >Apurv Singh</Typography>
+                            textDecoration: 'none',}}>
+                            Apurv Singh
+                        </Typography>
                     </Toolbar>
                 </Container>
             </AppBar>
