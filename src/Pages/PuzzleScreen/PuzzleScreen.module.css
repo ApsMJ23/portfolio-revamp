@@ -6,7 +6,7 @@
     justify-content: center;
 }
 .PuzzleContainer{
-    height: 50%;
+    height: 60%;
 }
 .GreetingsImage{
     position: absolute;
@@ -15,11 +15,4 @@
     width: 10rem;
     margin-bottom: 0.5rem;
     margin-right: 0.3rem;
-}
-.ScrollableContainer{
-    margin-top: 20%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
-
 }
