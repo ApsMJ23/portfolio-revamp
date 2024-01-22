@@ -17,7 +17,7 @@ const CodeBlockComponent=(props:CodeBlockComponentProps)=>{
     useEffect(() => {
         setPuzzle(PuzzleList?.[selectedLanguage]?.[randomPuzzle]??PuzzleList[selectedLanguage][0])
         setPuzzleOptions(puzzle.Options??[])
-    }, [randomPuzzle,selectedLanguage]);
+    }, [randomPuzzle,selectedLanguage,puzzle.Options]);
     return(
         <Box display={{xs:'flex'}} flexDirection={{xs:'column'}} alignItems={{xs:'center'}}  sx={{width: {xs: '90%', lg: '20rem'}}}>
             <FormControl variant="standard" sx={{ m: 1, minWidth: '100%' }}>
