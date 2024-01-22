@@ -1,0 +1,25 @@
+.PuzzleWrapper{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.PuzzleContainer{
+    height: 50%;
+}
+.GreetingsImage{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 10rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.3rem;
+}
+.ScrollableContainer{
+    margin-top: 20%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+}

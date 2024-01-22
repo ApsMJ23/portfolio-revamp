@@ -1,5 +1,6 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import Root from "./Root.tsx";
+import PuzzleScreen from "../Pages/PuzzleScreen/PuzzleScreen.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -9,7 +10,7 @@ export const router = createBrowserRouter([
             {index: true, element: <Navigate to={"/questions"} replace={true}/> },
             {
                 path:'/questions',
-                element:<h1>Questions</h1>
+                element:<PuzzleScreen/>
             },
             {
                 path:'/about',
