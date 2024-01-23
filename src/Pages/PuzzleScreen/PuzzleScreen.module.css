@@ -16,3 +16,23 @@
     margin-bottom: 0.5rem;
     margin-right: 0.3rem;
 }
+.BouncerImage{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: -4rem;
+    width: 17rem;
+    height: 20rem;
+}
+
+/* Writing Media Query For phones */
+@media (max-width: 768px) {
+    .BouncerImage{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-right: -3.5rem;
+        width: 17rem;
+        height: 20rem;
+    }
+}

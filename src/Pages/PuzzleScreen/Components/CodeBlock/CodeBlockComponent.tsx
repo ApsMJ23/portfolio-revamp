@@ -1,11 +1,11 @@
-import {PuzzleList} from "../../../../assets/Text/PuzzleList.ts";
+import {PuzzleList, QuestionType} from "../../../../assets/Text/PuzzleList.ts";
 import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {CodeBlock, dracula} from "react-code-blocks";
 
 
 type CodeBlockComponentProps={
-    setPuzzleOptions:Dispatch<SetStateAction<string[]>>
+    setPuzzleOptions:Dispatch<SetStateAction<QuestionType>>
 }
 
 const CodeBlockComponent=(props:CodeBlockComponentProps)=>{
@@ -16,8 +16,8 @@ const CodeBlockComponent=(props:CodeBlockComponentProps)=>{
     const [puzzle,setPuzzle] = useState(PuzzleList?.[selectedLanguage]?.[randomPuzzle]??PuzzleList[selectedLanguage][0])
     useEffect(() => {
         setPuzzle(PuzzleList?.[selectedLanguage]?.[randomPuzzle]??PuzzleList[selectedLanguage][0])
-        setPuzzleOptions(puzzle.Options??[])
-    }, [randomPuzzle,selectedLanguage,puzzle.Options]);
+        setPuzzleOptions(puzzle??PuzzleList[selectedLanguage][0])
+    }, [randomPuzzle, selectedLanguage, puzzle.Options, setPuzzleOptions, puzzle]);
     return(
         <Box display={{xs:'flex'}} flexDirection={{xs:'column'}} alignItems={{xs:'center'}}  sx={{width: {xs: '90%', lg: '20rem'}}}>
             <FormControl variant="standard" sx={{ m: 1, minWidth: '100%' }}>
@@ -35,6 +35,7 @@ const CodeBlockComponent=(props:CodeBlockComponentProps)=>{
                 ))}
             </Select>
             </FormControl>
+            <Box width={300} height={220}>
             <CodeBlock
                 text={puzzle.Code}
                 codeContainerStyle={{width: '100%',borderRadius:'5rem'}}
@@ -43,6 +44,7 @@ const CodeBlockComponent=(props:CodeBlockComponentProps)=>{
                 showLineNumbers={false}
                 theme={dracula}
             />
+            </Box>
         </Box>
     )
 

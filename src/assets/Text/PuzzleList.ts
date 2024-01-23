@@ -1,4 +1,4 @@
-type QuestionType = {
+export type QuestionType = {
     Code:string,
     Answer:string,
     Options:string[]
