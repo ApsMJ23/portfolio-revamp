@@ -63,7 +63,7 @@ const Result = (props:ResultProps)=>{
             </Box>
             <Box display={'flex'} width={'50%'} flexWrap={'wrap'} marginTop={'auto'} gap={{xs:1,md:5}}>
                 <Button onClick={handleReplay} variant={'contained'} color={'primary'} >{resultAttributes.button1}</Button>
-                <Button sx={{whiteSpace:'nowrap'}} variant={'contained'} color={'secondary'}>{resultAttributes.button2}</Button>
+                <Button onClick={()=>navigate('/home')} sx={{whiteSpace:'nowrap'}} variant={'contained'} color={'secondary'}>{resultAttributes.button2}</Button>
             </Box>
             <img src={Bouncer} className={styles.BouncerImage} alt={'Bouncer'}/>
         </Paper>
