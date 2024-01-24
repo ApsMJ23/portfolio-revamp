@@ -1,5 +1,7 @@
 import {useRef, useState} from "react";
 import styles from './Container.module.css'
+import Header from "../../Components/Header/Header.tsx";
+import {Box, Container, Typography} from "@mui/material";
 
 const HomeScreen = () => {
     const divRef = useRef<HTMLDivElement>(null);
@@ -43,6 +45,7 @@ const HomeScreen = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
+            <Header/>
             <div
                 className={styles.spotLight}
                 style={{
@@ -50,6 +53,12 @@ const HomeScreen = () => {
                     background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(85, 28, 218, 0.15), transparent 80%)`,
                 }}
             />
+            <Container maxWidth={'xl'}>
+                <Box display={'flex'} flexDirection={'column'} width={'100%'} marginTop={20} justifyContent={'center'} alignItems={'center'}>
+                    <Typography sx={{fontSize:70,fontFamily:"'Fjalla One', sans-serif"}} variant={'h1'}>Apurv Singh</Typography>
+                    <Typography marginTop={2} textAlign={'center'} variant={'h3'}>Frontend Engineer by day Basketball Player on the weekends!!</Typography>
+                </Box>
+            </Container>
         </div>
     )
 }

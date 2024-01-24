@@ -39,7 +39,7 @@ const theme = createTheme({
         },
     },
     typography:{
-        fontFamily:'Roboto, sans-serif',
+        fontFamily:"'Dosis', sans-serif",
         h1:{
             fontSize:'2.5rem',
             fontWeight:400,
