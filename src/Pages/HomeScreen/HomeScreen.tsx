@@ -2,11 +2,14 @@ import {useRef, useState} from "react";
 import styles from './Container.module.css'
 import Header from "../../Components/Header/Header.tsx";
 import {Box, Container, Typography} from "@mui/material";
+import {Player} from "@lottiefiles/react-lottie-player";
+import homePageBanner from '../../assets/Animations/homePageBanner.json'
+import ResumeContainer from "./Components/ResumeContainer/ResumeContainer.tsx";
 
 const HomeScreen = () => {
     const divRef = useRef<HTMLDivElement>(null);
     const [isFocused, setIsFocused] = useState(false);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [position, setPosition] = useState({x: 0, y: 0});
     const [opacity, setOpacity] = useState(0);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -15,7 +18,7 @@ const HomeScreen = () => {
         const div = divRef.current;
         const rect = div.getBoundingClientRect();
 
-        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+        setPosition({x: e.clientX - rect.left, y: e.clientY - rect.top});
     };
 
     const handleFocus = () => {
@@ -54,11 +57,26 @@ const HomeScreen = () => {
                 }}
             />
             <Container maxWidth={'xl'}>
-                <Box display={'flex'} flexDirection={'column'} width={'100%'} marginTop={20} justifyContent={'center'} alignItems={'center'}>
-                    <Typography sx={{fontSize:70,fontFamily:"'Fjalla One', sans-serif"}} variant={'h1'}>Apurv Singh</Typography>
-                    <Typography marginTop={2} textAlign={'center'} variant={'h3'}>Frontend Engineer by day Basketball Player on the weekends!!</Typography>
+                <Box display={'flex'} flexDirection={'column'} width={'100%'} marginTop={20} justifyContent={'center'}
+                     alignItems={'center'}>
+                    <Typography sx={{fontSize: 70, fontFamily: "'Fjalla One', sans-serif"}} variant={'h1'}>Apurv
+                        Singh</Typography>
+                    <Typography sx={{fontSize:20}} marginTop={2} textAlign={'center'} variant={'h3'}>Frontend Engineer by day Basketball
+                        Player on the weekends!!</Typography>
+                </Box>
+                <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
+                    <Box sx={{width: {xs: '100%', md: '40%'}, height: {xs: '100%', md: '40%'}}}>
+                        <Player
+                            src={homePageBanner}
+                            speed={1}
+                            autoplay={true}
+                            loop
+                            style={{height: '100%', width: '100%'}}
+                        />
+                    </Box>
                 </Box>
             </Container>
+            <ResumeContainer/>
         </div>
     )
 }
