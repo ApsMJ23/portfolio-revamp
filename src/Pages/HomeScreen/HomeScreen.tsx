@@ -5,6 +5,7 @@ import {Box, Container, Typography} from "@mui/material";
 import {Player} from "@lottiefiles/react-lottie-player";
 import homePageBanner from '../../assets/Animations/homePageBanner.json'
 import ResumeContainer from "./Components/ResumeContainer/ResumeContainer.tsx";
+import ProjectContainer from "./Components/ProjectContainer/ProjectContainer.tsx";
 
 const HomeScreen = () => {
     const divRef = useRef<HTMLDivElement>(null);
@@ -77,6 +78,7 @@ const HomeScreen = () => {
                 </Box>
             </Container>
             <ResumeContainer/>
+            <ProjectContainer/>
         </div>
     )
 }
