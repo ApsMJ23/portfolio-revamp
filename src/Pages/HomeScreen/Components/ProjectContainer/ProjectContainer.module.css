@@ -1,4 +1,10 @@
 .ProjectContainer{
     z-index: 10;
+    width:100%;
     position: relative;
+    background: beige;
+    border-radius: 20rem 0 0 20rem;
+    color: #333;
+    overflow-y: auto;
+
 }
