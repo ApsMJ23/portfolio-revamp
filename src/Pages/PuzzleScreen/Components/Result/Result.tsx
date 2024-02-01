@@ -1,6 +1,6 @@
 import styles from "../../PuzzleScreen.module.css";
 import {Box, Button, Paper, Typography} from "@mui/material";
-import Bouncer from "../../../../assets/PNG/bouncer.png";
+import Bouncer from '../../../../assets/PNG/Bouncer.png';
 import {Player} from "@lottiefiles/react-lottie-player";
 import CrossAnimation from '../../../../assets/Animations/CrossAnimation.json'
 import TickAnimation from '../../../../assets/Animations/TickAnimation.json'
