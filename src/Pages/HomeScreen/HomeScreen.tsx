@@ -1,11 +1,12 @@
 import {useRef, useState} from "react";
 import styles from './Container.module.css'
 import Header from "../../Components/Header/Header.tsx";
-import {Box, Container, Typography} from "@mui/material";
+import {Box, Container, Paper, Typography} from "@mui/material";
 import {Player} from "@lottiefiles/react-lottie-player";
 import homePageBanner from '../../assets/Animations/homePageBanner.json'
 import ResumeContainer from "./Components/ResumeContainer/ResumeContainer.tsx";
 import ProjectContainer from "./Components/ProjectContainer/ProjectContainer.tsx";
+import GitHubCalendar from "react-github-calendar";
 
 const HomeScreen = () => {
     const divRef = useRef<HTMLDivElement>(null);
@@ -79,6 +80,12 @@ const HomeScreen = () => {
             </Container>
             <ResumeContainer/>
             <ProjectContainer/>
+            <Paper elevation={4} sx={{display:'flex',marginTop:10, flexDirection:'column', paddingTop:5,justifyContent:'center', alignItems:'center' ,background:'#333',position:'relative',zIndex:'10',paddingBottom:10,paddingX:3}}>
+                <Typography fontWeight={600} variant={'h3'}>Github Contributions</Typography>
+                <Typography textAlign={'center'} variant={'h6'} marginBottom={5}>If you see blank, just know I code on a different account in office!! </Typography>
+                {/*@todo: Change the username to apsmj23 once you're consistent with your contributions*/}
+                <GitHubCalendar username="recur-apurv" colorScheme={'dark'} />
+            </Paper>
         </div>
     )
 }
