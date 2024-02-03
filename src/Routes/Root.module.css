@@ -1,8 +1,10 @@
 .enter{
     display: block;
+    overflow-x: hidden ;
     animation: inAnimation 0.5s ease-in-out forwards;
 }
 .exit{
+    overflow-x: hidden ;
     display: block;
     animation: outAnimation 0.5s ease-in-out forwards;
 }

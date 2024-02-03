@@ -1,21 +1,15 @@
-import {Button} from "@mui/material";
+import {Paper, Typography} from "@mui/material";
+import moment from "moment";
 
 
 const Footer = () => {
     return (
-        <footer className="footer">
-            <div className="footer__container">
-                <div className="footer__container__left">
-                    <h1>Let's work together</h1>
-                    <p>Feel free to reach out to me for any project or collaboration</p>
-                </div>
-                <div className="footer__container__right">
-                    <a href="mailto:apurvsiingh@gmail.com">
-                        <Button variant="contained" color="primary">Contact Me</Button>
-                    </a>
-                </div>
+        <Paper elevation={15} sx={{background:'#333',position:'relative',zIndex:10}}>
+            <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', padding:20}}>
+                <Typography variant={'h6'}>© {moment().format('YYYY')}</Typography>
+                <Typography variant={'h6'}>Made with ❤️ by <a href={'https://www.linkedin.com/in/apsmj23/'} target='_blank'>Apurv Singh</a></Typography>
             </div>
-        </footer>
+        </Paper>
     );
 }
 
