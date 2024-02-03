@@ -25,7 +25,7 @@ const ProjectContainer = () => {
                                     <Card onMouseEnter={()=>setShowDescription('hello')} onMouseLeave={()=>setShowDescription('')} ref={animateParent} sx={{width:{xs:'100%',md:300},height:300,background:'#292929',display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}} variant={'elevation'} elevation={10} >
                                         <FontAwesomeIcon color={'beige'} size={'3x'} icon={faAirbnb} style={{marginBottom:'1rem'}}/>
                                         <Typography sx={{color:'beige'}} variant={'h3'}>{project.title}</Typography>
-                                        {showDescription==='hello'&&<Typography sx={{color:'beige'}} marginTop={1} variant={'h6'}>{project.subTitle}</Typography>}
+                                        {showDescription==='hello'&&<Typography sx={{color:'beige'}} marginTop={1} whiteSpace={'nowrap'} variant={'h6'}>{project.subTitle}</Typography>}
                                     </Card>
                                     <Box width={{xs:'100%',md:600}}>
                                         <Typography>

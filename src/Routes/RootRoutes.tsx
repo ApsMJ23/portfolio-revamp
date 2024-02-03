@@ -1,9 +1,9 @@
-import {createBrowserRouter, Navigate} from "react-router-dom";
+import {createHashRouter, Navigate} from "react-router-dom";
 import Root from "./Root.tsx";
 import PuzzleScreen from "../Pages/PuzzleScreen/PuzzleScreen.tsx";
 import HomeScreen from "../Pages/HomeScreen/HomeScreen.tsx";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
     {
         path:'/',
         element:<Root/>,
