@@ -7,6 +7,7 @@ import homePageBanner from '../../assets/Animations/homePageBanner.json'
 import ResumeContainer from "./Components/ResumeContainer/ResumeContainer.tsx";
 import ProjectContainer from "./Components/ProjectContainer/ProjectContainer.tsx";
 import GitHubCalendar from "react-github-calendar";
+import Footer from "./Components/Footer/Footer.tsx";
 
 const HomeScreen = () => {
     const divRef = useRef<HTMLDivElement>(null);
@@ -41,52 +42,71 @@ const HomeScreen = () => {
         setOpacity(0);
     };
     return (
-        <div
-            ref={divRef}
-            className={styles.Container}
-            onMouseMove={handleMouseMove}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-        >
-            <Header/>
+        <>
             <div
-                className={styles.spotLight}
-                style={{
-                    opacity,
-                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(85, 28, 218, 0.15), transparent 80%)`,
-                }}
-            />
-            <Container maxWidth={'xl'}>
-                <Box display={'flex'} flexDirection={'column'} width={'100%'} marginTop={20} justifyContent={'center'}
-                     alignItems={'center'}>
-                    <Typography sx={{fontSize: 70, fontFamily: "'Fjalla One', sans-serif"}} variant={'h1'}>Apurv
-                        Singh</Typography>
-                    <Typography sx={{fontSize:20}} marginTop={2} textAlign={'center'} variant={'h3'}>Frontend Engineer by day Basketball
-                        Player on the weekends!!</Typography>
-                </Box>
-                <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
-                    <Box sx={{width: {xs: '100%', md: '40%'}, height: {xs: '100%', md: '40%'}}}>
-                        <Player
-                            src={homePageBanner}
-                            speed={1}
-                            autoplay={true}
-                            loop
-                            style={{height: '100%', width: '100%'}}
-                        />
+                ref={divRef}
+                className={styles.Container}
+                onMouseMove={handleMouseMove}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+            >
+                <Header/>
+                <div
+                    className={styles.spotLight}
+                    style={{
+                        opacity,
+                        background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(85, 28, 218, 0.15), transparent 80%)`,
+                    }}
+                />
+                <Container maxWidth={'xl'}>
+                    <Box display={'flex'} flexDirection={'column'} width={'100%'} marginTop={20}
+                         justifyContent={'center'}
+                         alignItems={'center'}>
+                        <Typography sx={{fontSize: 70, fontFamily: "'Fjalla One', sans-serif"}} variant={'h1'}>Apurv
+                            Singh</Typography>
+                        <Typography sx={{fontSize: 20}} marginTop={2} textAlign={'center'} variant={'h3'}>Frontend
+                            Engineer by day Basketball
+                            Player on the weekends!!</Typography>
                     </Box>
-                </Box>
-            </Container>
-            <ResumeContainer/>
-            <ProjectContainer/>
-            <Paper elevation={4} sx={{display:'flex',marginTop:10, flexDirection:'column', paddingTop:5,justifyContent:'center', alignItems:'center' ,background:'#333',position:'relative',zIndex:'10',paddingBottom:10,paddingX:3}}>
-                <Typography fontWeight={600} variant={'h3'}>Github Contributions</Typography>
-                <Typography textAlign={'center'} variant={'h6'} marginBottom={5}>If you see blank, just know I code on a different account in office!! </Typography>
-                {/*@todo: Change the username to apsmj23 once you're consistent with your contributions*/}
-                <GitHubCalendar username="recur-apurv" colorScheme={'dark'} />
-            </Paper>
-        </div>
+                    <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
+                        <Box sx={{width: {xs: '100%', md: '40%'}, height: {xs: '100%', md: '40%'}}}>
+                            <Player
+                                src={homePageBanner}
+                                speed={1}
+                                autoplay={true}
+                                loop
+                                style={{height: '100%', width: '100%'}}
+                            />
+                        </Box>
+                    </Box>
+                </Container>
+                <ResumeContainer/>
+                <ProjectContainer/>
+                <Paper elevation={4} sx={{
+                    display: 'flex',
+                    marginTop: 10,
+                    flexDirection: 'column',
+                    paddingTop: 5,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    background: '#333',
+                    position: 'relative',
+                    zIndex: '10',
+                    paddingBottom: 10,
+                    paddingX: 3
+                }}>
+                    <Typography fontWeight={600} variant={'h3'}>Github Contributions</Typography>
+                    <Typography textAlign={'center'} variant={'h6'} marginBottom={5}>If you see blank, just know I code
+                        on a different account in office!! </Typography>
+                    {/*@todo: Change the username to apsmj23 once you're consistent with your contributions*/}
+                    <GitHubCalendar username="recur-apurv" colorScheme={'dark'}/>
+                </Paper>
+            </div>
+            <Footer/>
+
+        </>
     )
 }
 
