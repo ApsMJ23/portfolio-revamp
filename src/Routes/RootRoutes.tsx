@@ -16,6 +16,10 @@ export const router = createHashRouter([
             {
                 path:'/home',
                 element:<HomeScreen/>
+            },
+            {
+                path:'*',
+                element:<Navigate to={"/home"} replace={true}/>
             }
         ]
 
