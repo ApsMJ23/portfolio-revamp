@@ -94,6 +94,7 @@ const theme = createTheme({
         },
     }
 })
+console.log('Testing')
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
