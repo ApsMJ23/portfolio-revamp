@@ -101,7 +101,7 @@ const HomeScreen = () => {
                     <Typography textAlign={'center'} variant={'h6'} marginBottom={5}>If you see blank, just know I code
                         on a different account in office!! </Typography>
                     {/*@todo: Change the username to apsmj23 once you're consistent with your contributions*/}
-                    <GitHubCalendar username="recur-apurv" colorScheme={'dark'}/>
+                    <GitHubCalendar username="apsmj23" colorScheme={'dark'}/>
                 </Paper>
             </div>
             <Footer/>

@@ -8,7 +8,7 @@ export const router = createHashRouter([
         path:'/',
         element:<Root/>,
         children:[
-            {index: true, element: <Navigate to={"/questions"} replace={true}/> },
+            {index: true, element: <Navigate to={"/home"} replace={true}/> },
             {
                 path:'/questions',
                 element:<PuzzleScreen/>
@@ -16,6 +16,10 @@ export const router = createHashRouter([
             {
                 path:'/home',
                 element:<HomeScreen/>
+            },
+            {
+                path:'*',
+                element:<Navigate to={"/home"} replace={true}/>
             }
         ]
 

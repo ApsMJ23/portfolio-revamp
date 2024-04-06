@@ -1,7 +1,26 @@
 export const ProjectContent = [
     {
-        title: "AirBnB Clone",
-        subTitle: "My first Dig at React Native",
-        description:"In my maiden venture into React Native, following two years as a React developer, the transition was seamless, given the freshness of my React concepts. The development of this app showcased my adeptness as I successfully crafted a robust Auth Framework utilizing Clerk as the backend. Integrating Google, Apple, and Facebook signup and login functionalities, I enhanced user accessibility. Strategic implementation of FlatLists and animations, coupled with a file-based routing system for tabs and modals, optimized navigation. The app seamlessly rendered extensive data on simple views and interactive maps, while also featuring a profile page with picture upload capability, contributing to a comprehensive and user-friendly application.",
-    }
+        title: "Vruoom CRM Frontend",
+        subTitle: "CRM App managing more than 50 Fuel stations.",
+        description:[
+            "Supports real time updates across all the users using REST Apis",
+            "Uses Django Token authentication for authentication and authorization purposes.",
+            "Redux Saga is used for efficient api calls and global stage management",
+            "There is RBAC (Role Based Access Control) giving the admin more control over the data being shown",
+        ],
+        techStack:["ReactJs","Redux","Typescript","SCSS","REST Api"],
+        projectLink:"https://github.com/ApsMJ23/vruoom_frontend"
+    },
+    {
+        title: "Vruoom CRM Backend ",
+        subTitle: "Microservice based monolithic architecture, django rest framework backend service",
+        description:[
+            "Authentication service is a totally independent module, easily pluggable to any frontend and good to go!!",
+            "RBAC module allows the user to give out different data to different users based on their roles",
+            "The roles are also customisable and we can add and remove them through the admin panel",
+            "The app uses django rest framework to send and receive requests and response"
+        ],
+        techStack: ["Django","Python","Django Rest Framework","SQLite"],
+        projectLink: "https://github.com/ApsMJ23/vruoom_backend"
+    },
 ]
