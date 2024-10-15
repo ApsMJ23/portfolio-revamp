@@ -1,18 +1,18 @@
-import {useRef, useState} from "react";
-import styles from './Container.module.css'
+import { useRef, useState } from "react";
+import styles from './Container.module.scss'
 import Header from "../../Components/Header/Header.tsx";
-import {Box, Container, Paper, Typography} from "@mui/material";
-import {Player} from "@lottiefiles/react-lottie-player";
-import homePageBanner from '../../assets/Animations/homePageBanner.json'
+import { Player } from "@lottiefiles/react-lottie-player";
+import homePageBanner from '../../assets/Animations/homePageBanner.json';
 import ResumeContainer from "./Components/ResumeContainer/ResumeContainer.tsx";
 import ProjectContainer from "./Components/ProjectContainer/ProjectContainer.tsx";
 import GitHubCalendar from "react-github-calendar";
 import Footer from "./Components/Footer/Footer.tsx";
+import {Card} from "@/Components/ui/card.tsx";
 
 const HomeScreen = () => {
     const divRef = useRef<HTMLDivElement>(null);
     const [isFocused, setIsFocused] = useState(false);
-    const [position, setPosition] = useState({x: 0, y: 0});
+    const [position, setPosition] = useState({ x: 0, y: 0 });
     const [opacity, setOpacity] = useState(0);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -21,7 +21,7 @@ const HomeScreen = () => {
         const div = divRef.current;
         const rect = div.getBoundingClientRect();
 
-        setPosition({x: e.clientX - rect.left, y: e.clientY - rect.top});
+        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
     };
 
     const handleFocus = () => {
@@ -41,6 +41,7 @@ const HomeScreen = () => {
     const handleMouseLeave = () => {
         setOpacity(0);
     };
+
     return (
         <>
             <div
@@ -52,7 +53,7 @@ const HomeScreen = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <Header/>
+                <Header />
                 <div
                     className={styles.spotLight}
                     style={{
@@ -60,54 +61,35 @@ const HomeScreen = () => {
                         background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(85, 28, 218, 0.15), transparent 80%)`,
                     }}
                 />
-                <Container maxWidth={'xl'}>
-                    <Box display={'flex'} flexDirection={'column'} width={'100%'} marginTop={20}
-                         justifyContent={'center'}
-                         alignItems={'center'}>
-                        <Typography sx={{fontSize: 70, fontFamily: "'Fjalla One', sans-serif"}} variant={'h1'}>Apurv
-                            Singh</Typography>
-                        <Typography sx={{fontSize: 20}} marginTop={2} textAlign={'center'} variant={'h3'}>Frontend
-                            Engineer by day Basketball
-                            Player on the weekends!!</Typography>
-                    </Box>
-                    <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
-                        <Box sx={{width: {xs: '100%', md: '40%'}, height: {xs: '100%', md: '40%'}}}>
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex flex-col w-full mt-20 justify-center items-center">
+                        <h1 className="text-6xl font-extrabold font-sans">Apurv Singh</h1>
+                        <h4 className="text-xl mt-2 text-center">Frontend Engineer by day Basketball Player on the weekends!!</h4>
+                    </div>
+                    <div className="flex flex-col justify-center items-center">
+                        <div className="w-full md:w-2/5 h-full md:h-2/5">
                             <Player
                                 src={homePageBanner}
                                 speed={1}
                                 autoplay={true}
                                 loop
-                                style={{height: '100%', width: '100%'}}
+                                style={{ height: '100%', width: '100%' }}
                             />
-                        </Box>
-                    </Box>
-                </Container>
-                <ResumeContainer/>
-                <ProjectContainer/>
-                <Paper elevation={4} sx={{
-                    display: 'flex',
-                    marginTop: 10,
-                    flexDirection: 'column',
-                    paddingTop: 5,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    background: '#333',
-                    position: 'relative',
-                    zIndex: '10',
-                    paddingBottom: 10,
-                    paddingX: 3
-                }}>
-                    <Typography fontWeight={600} variant={'h3'}>Github Contributions</Typography>
-                    <Typography textAlign={'center'} variant={'h6'} marginBottom={5}>If you see blank, just know I code
-                        on a different account in office!! </Typography>
-                    {/*@todo: Change the username to apsmj23 once you're consistent with your contributions*/}
-                    <GitHubCalendar username="apsmj23" colorScheme={'dark'}/>
-                </Paper>
+                        </div>
+                    </div>
+                </div>
+                <ResumeContainer />
+                <ProjectContainer />
+                <Card className="mt-10 p-5 flex flex-col justify-center items-center bg-gray-800 relative z-10 pb-10 px-3 shadow-lg">
+                    <h1 className="font-semibold text-3xl">Github Contributions</h1>
+                    <p className="text-center text-lg mb-5">If you see blank, just know I code on a different account in office!!</p>
+                    {/* @todo: Change the username to apsmj23 once you're consistent with your contributions */}
+                    <GitHubCalendar username="apsmj23" colorScheme={'dark'} />
+                </Card>
             </div>
-            <Footer/>
-
+            <Footer />
         </>
-    )
-}
+    );
+};
 
-export default HomeScreen
+export default HomeScreen;

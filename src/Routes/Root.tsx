@@ -8,10 +8,15 @@ const Root = () => {
     const [animateParent] = useAutoAnimate()
     const [loading,setLoading] = useState(sessionStorage.getItem('loading')??true);
     useEffect(() => {
-        const timeout=setTimeout(()=>{
+        let timeout: NodeJS.Timeout;
+        if(!localStorage.getItem('loading')) {
+            timeout = setTimeout(() => {
+                setLoading(false);
+                sessionStorage.setItem('loading', 'false');
+            }, 5000)
+        }else{
             setLoading(false);
-            sessionStorage.setItem('loading','false');
-        },5000)
+        }
         return () => {
             clearTimeout(timeout);
         }

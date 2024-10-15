@@ -10,3 +10,8 @@
         opacity: 0;
         transition: opacity 300ms;
 }
+.BannerWrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,20 +1,18 @@
-import {Box, Container, Typography} from "@mui/material";
-import styles from './ProjectContainer.module.css';
 import VerticalCarousel from "./Components/VerticalCarousel/VerticalCarousel.tsx";
-
 
 const ProjectContainer = () => {
     return (
-        <Container maxWidth={'xl'} sx={{marginTop:20,paddingX:5,paddingY:5,display:'flex',gap:{md:10,xs:0},flexWrap:{xs:'wrap',md:'nowrap'}}} className={styles.ProjectContainer}>
-            <Box position={'sticky'} top={0} display={'flex'} justifyContent={'center'} alignItems={'center'} width={{md:'50%',xs:'100%'}}>
-                <Typography variant={'h1'} fontSize={{md:150,xs:40}} fontWeight={600} fontFamily={"'Fjalla One',sans-serif"}>Freelance Projects</Typography>
-            </Box>
-            <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} width={{md:'50%',xs:'100%'}}>
-                <VerticalCarousel/>
-            </Box>
-
-        </Container>
+        <div className="max-w-7xl mx-auto mt-20 px-5 py-5 flex flex-wrap md:flex-nowrap gap-10">
+            <div className="sticky top-0 flex justify-center items-center w-full md:w-1/2">
+                <h1 className="text-center font-bold font-sans text-4xl md:text-[150px]">
+                    Freelance Projects
+                </h1>
+            </div>
+            <div className="flex flex-col justify-center items-center w-full md:w-1/2">
+                <VerticalCarousel />
+            </div>
+        </div>
     );
-}
+};
 
 export default ProjectContainer;

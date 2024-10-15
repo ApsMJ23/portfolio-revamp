@@ -1,65 +1,51 @@
-import {
-    Container,
-    List,
-    ListItem,
-    ListItemText,
-    Step,
-    StepContent,
-    StepLabel,
-    Stepper,
-    Typography
-} from "@mui/material";
-import {useState} from "react";
-import {ResumeContent} from '../../../../assets/Text/ResumeContent.ts'
-
+import { useState } from "react";
+import { ResumeContent } from '../../../../assets/Text/ResumeContent.ts';
 
 const ResumeContainer = () => {
     const [activeStep, setActiveStep] = useState(0);
+
     return (
         <>
-            <Typography fontWeight={700} variant={'h1'}
-                        sx={{textAlign: 'center', marginTop: 30, marginBottom: 10, textDecoration: 'underline'}}>Work
-                Experience</Typography>
-            <Container>
-                <Stepper activeStep={activeStep} orientation="vertical">
+            <h1 className="text-center mt-30 mb-10 text-4xl font-bold underline">Work Experience</h1>
+            <div className="max-w-7xl mx-auto">
+                <div className="space-y-6">
                     {ResumeContent.map((step, index) => (
-                        <Step key={index}>
-                            <StepLabel
-                                icon={<img src={step.iconLink} alt={'icon'} style={{
-                                    borderRadius: '50%',
-                                    height: '2rem',
-                                    width: '2rem',
-                                    background: 'white'
-                                }}/>}
-                                sx={{cursor: 'pointer'}}
+                        <div key={index}>
+                            <div
+                                className={`flex items-center cursor-pointer ${activeStep === index ? 'bg-gray-800' : ''}`}
                                 onClick={() => setActiveStep(index)}
                             >
-                                <Typography sx={{cursor: 'pointer'}} color={activeStep === index ? 'white' : 'beige'}
-                                            variant={'h3'}>{step.company}</Typography>
-                                <Typography sx={{cursor: 'pointer'}} fontWeight={500}
-                                            color={activeStep === index ? 'white' : 'beige'}>{step.designation}</Typography>
-                            </StepLabel>
-                            <StepContent>
-                                {step.roleResponsibilities.map((responsibility, index) => (
-                                    <List sx = {{
-                                        listStyleType: 'disc',
-                                        pl: {xs:2,md:4},
-                                    }} disablePadding={true} key={index}>
-                                        <ListItem sx = {{
-                                            display: 'list-item',
-                                        }} >
-                                            <ListItemText >{responsibility}</ListItemText>
-                                        </ListItem>
-                                    </List>
-                                ))
-                                }
-                            </StepContent>
-                        </Step>
+                                <img
+                                    src={step.iconLink}
+                                    alt={'icon'}
+                                    className="rounded-full h-8 w-8 bg-white mr-4"
+                                />
+                                <div>
+                                    <h3 className={`text-xl font-bold ${activeStep === index ? 'text-white' : 'text-gray-600'}`}>
+                                        {step.company}
+                                    </h3>
+                                    <p className={`text-lg ${activeStep === index ? 'text-white' : 'text-gray-500'}`}>
+                                        {step.designation}
+                                    </p>
+                                </div>
+                            </div>
+                            {activeStep === index && (
+                                <div className="pl-10 pt-4">
+                                    <ul className="list-disc list-inside space-y-2">
+                                        {step.roleResponsibilities.map((responsibility, index) => (
+                                            <li key={index} className="text-gray-400">
+                                                {responsibility}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                        </div>
                     ))}
-                </Stepper>
-            </Container>
+                </div>
+            </div>
         </>
-    )
-}
+    );
+};
 
 export default ResumeContainer;

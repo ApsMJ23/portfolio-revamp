@@ -1,31 +1,40 @@
-import {AppBar, Container, Toolbar, Typography, useScrollTrigger} from "@mui/material";
-import CodeOffIcon from '@mui/icons-material/CodeOff';
+import { useState, useEffect } from "react";
+import { Code2 } from "lucide-react";
+import clsx from "clsx";
 
 const Header = () => {
-    const trigger = useScrollTrigger({disableHysteresis: true, threshold: 100});
+    const [trigger, setTrigger] = useState(false);
+
+    const handleScroll = () => {
+        if (window.scrollY > 100) {
+            setTrigger(true);
+        } else {
+            setTrigger(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
-        <>
-            <AppBar elevation={trigger ? 10 : 0} color={trigger ? 'primary' : 'transparent'} position={'fixed'}>
-                <Container maxWidth={'xl'}>
-                    <Toolbar disableGutters>
-                        <CodeOffIcon sx={{fontSize: '2rem',marginRight:'1.5rem'}}/>
-                        <Typography
-                            variant={'h6'}
-                            noWrap
-                            sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            color: 'inherit',
-                            textDecoration: 'none',}}>
-                            Apurv Singh
-                        </Typography>
-                    </Toolbar>
-                </Container>
-            </AppBar>
-        </>
-    )
-}
+        <header className={clsx("fixed top-0 left-0 w-full z-50 transition-shadow", {
+            "shadow-lg bg-primary": trigger,
+            "bg-transparent": !trigger,
+        })}>
+            <div className="max-w-7xl mx-auto">
+                <div className="flex items-center py-4">
+                    <Code2 className="w-8 h-8 mr-6 text-white" />
+                    <h1 className="text-lg font-bold hidden md:flex font-mono text-white">
+                        Apurv Singh
+                    </h1>
+                </div>
+            </div>
+        </header>
+    );
+};
 
 export default Header;
