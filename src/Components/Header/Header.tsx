@@ -1,40 +1,82 @@
-import { useState, useEffect } from "react";
-import { Code2 } from "lucide-react";
-import clsx from "clsx";
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
-const Header = () => {
-    const [trigger, setTrigger] = useState(false);
+const Header: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollY } = useScroll();
 
-    const handleScroll = () => {
-        if (window.scrollY > 100) {
-            setTrigger(true);
-        } else {
-            setTrigger(false);
-        }
-    };
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 50);
+  });
 
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
-    return (
-        <header className={clsx("fixed top-0 left-0 w-full z-50 transition-shadow", {
-            "shadow-lg bg-primary": trigger,
-            "bg-transparent": !trigger,
-        })}>
-            <div className="max-w-7xl mx-auto">
-                <div className="flex items-center py-4">
-                    <Code2 className="w-8 h-8 mr-6 text-white" />
-                    <h1 className="text-lg font-bold hidden md:flex font-mono text-white">
-                        Apurv Singh
-                    </h1>
-                </div>
-            </div>
-        </header>
-    );
+  return (
+    <motion.header
+      className={cn(
+        "fixed top-0 left-0 right-0 w-full px-4 md:px-8 py-4 flex justify-between items-center z-50 transition-all duration-300",
+        isScrolled
+          ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm"
+          : "bg-transparent"
+      )}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+    >
+      <motion.div 
+        className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent"
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.2 }}
+      >
+        Portfolio
+      </motion.div>
+      
+      <nav>
+        <motion.ul 
+          className="flex list-none gap-8 m-0 p-0"
+          variants={{
+            initial: {},
+            animate: {
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          }}
+          initial="initial"
+          animate="animate"
+        >
+          {[
+            { href: "#home", label: "Home" },
+            { href: "#projects", label: "Projects" },
+            { href: "#about", label: "About" }
+          ].map((item, index) => (
+            <motion.li
+              key={item.href}
+              variants={{
+                initial: { opacity: 0, y: -20 },
+                animate: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+            >
+              <motion.a
+                href={item.href}
+                className="text-foreground/80 hover:text-foreground transition-colors duration-200 font-medium relative"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {item.label}
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-left"
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.2 }}
+                />
+              </motion.a>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </nav>
+    </motion.header>
+  );
 };
 
-export default Header;
+export default Header; 

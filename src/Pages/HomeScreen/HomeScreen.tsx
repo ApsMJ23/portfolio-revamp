@@ -61,7 +61,7 @@ const HomeScreen = () => {
                         background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(85, 28, 218, 0.15), transparent 80%)`,
                     }}
                 />
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-7xl mx-auto pt-20">
                     <div className="flex flex-col w-full mt-20 justify-center items-center">
                         <h1 className="text-6xl font-extrabold font-sans">Apurv Singh</h1>
                         <h4 className="text-xl mt-2 text-center">Frontend Engineer by day Basketball Player on the weekends!!</h4>
