@@ -1,14 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+} from '@/Components/ui/sheet';
+import { Button } from '@/Components/ui/button';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
   });
+
+  const navigationItems = [
+    { href: "#home", label: "Home" },
+    { href: "#projects", label: "Projects" },
+    { href: "#about", label: "About" }
+  ];
+
+  const handleMobileNavClick = (href: string) => {
+    setIsMobileMenuOpen(false);
+    // Smooth scroll to section
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <motion.header
@@ -22,6 +48,7 @@ const Header: React.FC = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
     >
+      {/* Logo */}
       <motion.div 
         className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent"
         whileHover={{ scale: 1.05 }}
@@ -30,7 +57,8 @@ const Header: React.FC = () => {
         Portfolio
       </motion.div>
       
-      <nav>
+      {/* Desktop Navigation */}
+      <nav className="hidden md:block">
         <motion.ul 
           className="flex list-none gap-8 m-0 p-0"
           variants={{
@@ -44,11 +72,7 @@ const Header: React.FC = () => {
           initial="initial"
           animate="animate"
         >
-          {[
-            { href: "#home", label: "Home" },
-            { href: "#projects", label: "Projects" },
-            { href: "#about", label: "About" }
-          ].map((item, index) => (
+          {navigationItems.map((item, index) => (
             <motion.li
               key={item.href}
               variants={{
@@ -75,6 +99,75 @@ const Header: React.FC = () => {
           ))}
         </motion.ul>
       </nav>
+
+      {/* Mobile Navigation */}
+      <div className="md:hidden">
+        <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+          <SheetTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-10 w-10"
+              aria-label="Open mobile menu"
+            >
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Menu className="h-6 w-6" />
+              </motion.div>
+            </Button>
+          </SheetTrigger>
+          
+          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetHeader>
+              <SheetTitle className="text-left">Navigation</SheetTitle>
+            </SheetHeader>
+            
+            <nav className="mt-8">
+              <ul className="space-y-4">
+                {navigationItems.map((item, index) => (
+                  <motion.li
+                    key={item.href}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <SheetClose asChild>
+                      <motion.a
+                        href={item.href}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleMobileNavClick(item.href);
+                        }}
+                        className="block text-lg font-medium text-foreground/80 hover:text-foreground transition-colors duration-200 py-2 px-4 rounded-md hover:bg-accent"
+                        whileHover={{ x: 8 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        {item.label}
+                      </motion.a>
+                    </SheetClose>
+                  </motion.li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Additional mobile menu content */}
+            <div className="mt-8 pt-8 border-t border-border">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-center"
+              >
+                <p className="text-sm text-muted-foreground">
+                  Thanks for visiting my portfolio
+                </p>
+              </motion.div>
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
     </motion.header>
   );
 };

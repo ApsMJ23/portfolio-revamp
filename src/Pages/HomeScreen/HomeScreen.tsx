@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
-import styles from './Container.module.scss'
 import Header from "../../Components/Header/Header.tsx";
 import { Player } from "@lottiefiles/react-lottie-player";
 import homePageBanner from '../../assets/Animations/homePageBanner.json';
 import ResumeContainer from "./Components/ResumeContainer/ResumeContainer.tsx";
 import ProjectContainer from "./Components/ProjectContainer/ProjectContainer.tsx";
-import GitHubCalendar from "react-github-calendar";
+import GitHubContributions from "./Components/GitHubContributions/GitHubContributions.tsx";
 import Footer from "./Components/Footer/Footer.tsx";
+import { ScrollProgress } from "@/Components/ui/scroll-progress";
+import { FloatingElements, GradientBackground } from "@/Components/ui/parallax-background";
 import {Card} from "@/Components/ui/card.tsx";
 
 const HomeScreen = () => {
@@ -44,18 +45,25 @@ const HomeScreen = () => {
 
     return (
         <>
+            {/* Scroll Progress Indicators */}
+            <ScrollProgress variant="line" position="top" />
+            <ScrollProgress variant="circle" showPercentage showScrollToTop />
+            
             <div
                 ref={divRef}
-                className={styles.Container}
+                className="overflow-x-hidden min-h-screen py-20 relative"
                 onMouseMove={handleMouseMove}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
+                {/* Animated Background Elements */}
+                <GradientBackground />
+                <FloatingElements />
                 <Header />
                 <div
-                    className={styles.spotLight}
+                    className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300"
                     style={{
                         opacity,
                         background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(85, 28, 218, 0.15), transparent 80%)`,
@@ -80,12 +88,7 @@ const HomeScreen = () => {
                 </div>
                 <ResumeContainer />
                 <ProjectContainer />
-                <Card className="mt-10 p-5 flex flex-col justify-center items-center bg-gray-800 relative z-10 pb-10 px-3 shadow-lg">
-                    <h1 className="font-semibold text-3xl">Github Contributions</h1>
-                    <p className="text-center text-lg mb-5">If you see blank, just know I code on a different account in office!!</p>
-                    {/* @todo: Change the username to apsmj23 once you're consistent with your contributions */}
-                    <GitHubCalendar username="apsmj23" colorScheme={'dark'} />
-                </Card>
+                <GitHubContributions />
             </div>
             <Footer />
         </>

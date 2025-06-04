@@ -1,6 +1,30 @@
 // Animation utilities for Framer Motion
 // Common animation variants used throughout the portfolio
 
+// Animation performance utilities for optimized 60fps animations
+import { Variants } from "framer-motion";
+
+// Performance-optimized animation settings
+export const performanceSettings = {
+  // Use transform instead of layout animations when possible
+  layoutDependency: false,
+  // Enable GPU acceleration
+  willChange: "transform, opacity",
+  // Optimize for 60fps
+  transition: {
+    type: "tween" as const,
+    ease: "easeOut" as const,
+    duration: 0.3,
+  },
+};
+
+// Common easing functions optimized for performance
+export const easings = {
+  smooth: [0.4, 0, 0.2, 1] as [number, number, number, number],
+  spring: [0.34, 1.56, 0.64, 1] as [number, number, number, number],
+  bounce: [0.68, -0.55, 0.265, 1.55] as [number, number, number, number],
+};
+
 // Basic fade animations
 export const fadeIn = {
   initial: { opacity: 0 },
@@ -9,12 +33,31 @@ export const fadeIn = {
   transition: { duration: 0.3 }
 }
 
-export const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 },
-  transition: { duration: 0.4, ease: "easeOut" }
-}
+export const fadeInUp: Variants = {
+  initial: { 
+    opacity: 0, 
+    y: 20,
+    scale: 0.95
+  },
+  animate: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.4,
+      ease: easings.smooth,
+    }
+  },
+  exit: { 
+    opacity: 0, 
+    y: -20,
+    scale: 0.95,
+    transition: {
+      duration: 0.2,
+      ease: easings.smooth,
+    }
+  }
+};
 
 export const fadeInDown = {
   initial: { opacity: 0, y: -20 },
@@ -46,21 +89,27 @@ export const scaleIn = {
 }
 
 // Stagger animations for lists/grids
-export const staggerContainer = {
+export const staggerContainer: Variants = {
   initial: {},
   animate: {
     transition: {
       staggerChildren: 0.1,
-      delayChildren: 0.1
+      delayChildren: 0.1,
     }
   }
-}
+};
 
-export const staggerItem = {
+export const staggerItem: Variants = {
   initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.4, ease: "easeOut" }
-}
+  animate: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: easings.smooth,
+    }
+  }
+};
 
 // Button interactions
 export const buttonHover = {
@@ -75,10 +124,15 @@ export const buttonTap = {
 
 // Card interactions
 export const cardHover = {
-  y: -2,
-  boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-  transition: { duration: 0.2, ease: "easeOut" }
-}
+  y: -8,
+  scale: 1.02,
+  boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+  transition: {
+    type: "spring",
+    stiffness: 300,
+    damping: 20,
+  }
+};
 
 export const cardHoverDark = {
   y: -2,
@@ -151,16 +205,16 @@ export const headerScrollDark = {
 }
 
 // Loading animations
-export const spinner = {
+export const spinnerAnimation: Variants = {
   animate: {
     rotate: 360,
     transition: {
       duration: 1,
       repeat: Infinity,
-      ease: "linear"
+      ease: "linear",
     }
   }
-}
+};
 
 export const pulse = {
   animate: {
@@ -181,11 +235,17 @@ export const typewriter = {
 }
 
 // Progress bar animation
-export const progressBar = (progress: number) => ({
+export const progressBar = (progress: number): Variants => ({
   initial: { width: 0 },
-  animate: { width: `${progress}%` },
-  transition: { duration: 1, ease: "easeOut", delay: 0.2 }
-})
+  animate: { 
+    width: `${progress}%`,
+    transition: {
+      duration: 1.5,
+      ease: easings.smooth,
+      delay: 0.5,
+    }
+  }
+});
 
 // Theme toggle animation
 export const themeToggle = {
@@ -239,14 +299,22 @@ export const mobileMenu = {
 }
 
 // Scroll-triggered animations (for use with intersection observer)
-export const scrollReveal = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { 
+export const scrollReveal: Variants = {
+  initial: { 
+    opacity: 0, 
+    y: 50,
+    scale: 0.9
+  },
+  animate: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: easings.smooth,
+    }
   }
-}
+};
 
 export const scrollRevealStagger = {
   hidden: {},
@@ -266,3 +334,91 @@ export const springTransition = (stiffness = 300, damping = 30) => ({
 
 // Utility function to create custom easing
 export const customEasing = [0.4, 0, 0.2, 1] // Material Design easing 
+
+// Slide animations
+export const slideInLeft: Variants = {
+  initial: { x: -100, opacity: 0 },
+  animate: { 
+    x: 0, 
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      ease: easings.smooth,
+    }
+  },
+  exit: { 
+    x: -100, 
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+      ease: easings.smooth,
+    }
+  }
+};
+
+export const slideInRight: Variants = {
+  initial: { x: 100, opacity: 0 },
+  animate: { 
+    x: 0, 
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      ease: easings.smooth,
+    }
+  },
+  exit: { 
+    x: 100, 
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+      ease: easings.smooth,
+    }
+  }
+};
+
+// Performance-optimized viewport settings
+export const viewportSettings = {
+  once: true,
+  margin: "-50px",
+  amount: 0.3,
+};
+
+// Performance monitoring utility
+export const animationConfig = {
+  // Enable hardware acceleration
+  style: {
+    willChange: "transform, opacity",
+    transform: "translateZ(0)", // Force GPU layer
+  },
+  // Optimize for 60fps
+  transition: {
+    duration: 0.3,
+    ease: easings.smooth,
+  },
+  // Reduce motion for accessibility
+  whileInView: {
+    viewport: viewportSettings,
+  },
+};
+
+// Reduced motion variants (for accessibility)
+export const reducedMotionSettings = {
+  transition: { duration: 0.01 },
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
+// Text reveal animation (for typewriter effect)
+export const textReveal: Variants = {
+  initial: { opacity: 0, y: 20 },
+  animate: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.3,
+      ease: easings.smooth,
+    }
+  })
+}; 
