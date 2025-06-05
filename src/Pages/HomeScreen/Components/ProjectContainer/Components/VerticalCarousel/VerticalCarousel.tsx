@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence, PanInfo, useMotionValue, useTransform, useScroll } from "framer-motion";
+import { motion, AnimatePresence, PanInfo, useMotionValue, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight, ExternalLink, Code2 } from "lucide-react";
 import { ProjectContent } from '@/assets/Text/ProjectContent.ts';
 import { Button } from '@/Components/ui/button';
@@ -93,7 +93,7 @@ const VerticalCarousel = () => {
         setIsDragging(true);
     };
 
-    const handleDragEnd = (event: any, info: PanInfo) => {
+    const handleDragEnd = (_: any, info: PanInfo) => {
         setIsDragging(false);
         const swipe = swipePower(info.offset.x, info.velocity.x);
 

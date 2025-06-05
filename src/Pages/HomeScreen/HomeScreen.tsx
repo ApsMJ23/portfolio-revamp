@@ -8,7 +8,6 @@ import GitHubContributions from "./Components/GitHubContributions/GitHubContribu
 import Footer from "./Components/Footer/Footer.tsx";
 import { ScrollProgress } from "@/Components/ui/scroll-progress";
 import { FloatingElements, GradientBackground } from "@/Components/ui/parallax-background";
-import {Card} from "@/Components/ui/card.tsx";
 
 const HomeScreen = () => {
     const divRef = useRef<HTMLDivElement>(null);
