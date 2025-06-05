@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Sun, Moon, Monitor, Palette } from "lucide-react";
+import { Sun, Moon, Monitor } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Theme = "light" | "dark" | "system";
@@ -248,11 +248,9 @@ export const AnimatedThemeToggle = ({
 // Theme transition overlay
 export const ThemeTransition = ({ 
   isTransitioning,
-  fromTheme,
   toTheme 
 }: {
   isTransitioning: boolean;
-  fromTheme?: Theme;
   toTheme?: Theme;
 }) => {
   return (

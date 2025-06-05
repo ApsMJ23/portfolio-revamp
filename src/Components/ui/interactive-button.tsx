@@ -38,14 +38,11 @@ export const InteractiveButton = ({
   onClick,
   disabled = false
 }: InteractiveButtonProps) => {
-  const [isClicked, setIsClicked] = useState(false);
   const [ripples, setRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (disabled || isLoading) return;
-
-    setIsClicked(true);
     
     // Create ripple effect
     if (ripple) {
@@ -65,8 +62,6 @@ export const InteractiveButton = ({
     if (onClick) {
       await onClick();
     }
-
-    setTimeout(() => setIsClicked(false), 150);
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {

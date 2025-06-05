@@ -1,6 +1,6 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ChevronUp, Circle } from "lucide-react";
+import { ChevronUp } from "lucide-react";
 
 interface ScrollProgressProps {
   variant?: "line" | "circle" | "dots" | "sidebar";

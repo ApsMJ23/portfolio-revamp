@@ -261,21 +261,7 @@ const GitHubContributions = () => {
     }
   };
 
-  const squareVariants = {
-    hidden: { 
-      scale: 0,
-      opacity: 0
-    },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20
-      }
-    }
-  };
+
 
   const statsVariants = {
     hidden: { opacity: 0, x: -20 },

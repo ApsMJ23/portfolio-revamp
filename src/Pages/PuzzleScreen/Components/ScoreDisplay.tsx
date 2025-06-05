@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Trophy, Star, Zap, Target, Award, TrendingUp, Brain, Clock } from "lucide-react";
+import { Trophy, Star, Zap, Award, TrendingUp, Brain, Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/Components/ui/card";
 import { Badge } from "@/Components/ui/badge";
 import { Progress } from "@/Components/ui/progress";
@@ -242,7 +242,7 @@ const ScoreDisplay = ({
                             </h3>
                             
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                                {achievements.map((achievement, index) => (
+                                {achievements.map((achievement, _) => (
                                     <motion.div
                                         key={achievement.id}
                                         variants={itemVariants}

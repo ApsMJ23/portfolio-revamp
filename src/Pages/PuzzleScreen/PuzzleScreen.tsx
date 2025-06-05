@@ -18,7 +18,7 @@ const PuzzleScreen = () => {
     const [isProcessing, setIsProcessing] = useState(false);
     const [hoveredOption, setHoveredOption] = useState<string>("");
     const [timerActive, setTimerActive] = useState(true);
-    const [showTimer, setShowTimer] = useState(true);
+    const [showTimer] = useState(true);
     const [selectedPuzzle, setSelectedPuzzle] = useState<QuestionType>({
         Code: '',
         Options: [],
