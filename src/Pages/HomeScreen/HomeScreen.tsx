@@ -71,7 +71,7 @@ const HomeScreen = () => {
                 <div className="max-w-7xl mx-auto pt-20">
                     <div className="flex flex-col w-full mt-20 justify-center items-center">
                         <h1 className="text-6xl font-extrabold font-sans">Apurv Singh</h1>
-                        <h4 className="text-xl mt-2 text-center">Frontend Engineer by day Basketball Player on the weekends!!</h4>
+                        <h4 className="text-xl mt-2 text-center">Rashmi's Husband, Frontend Engineer by day Basketball Player on the weekends!!</h4>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                         <div className="w-full md:w-2/5 h-full md:h-2/5">
